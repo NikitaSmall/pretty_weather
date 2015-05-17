@@ -12,7 +12,7 @@ gem 'pretty_weather'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -22,12 +22,13 @@ Next, you may set initializer for default city to know the current weather in it
 Also you may specify units: metric for celsius, imperial for fahrenheit, or '' for kelvin temperature scale.
 Place the 'pretty_weather.rb' at 'config/initializers/pretty_weather.rb' and write these strings:
 
-    ```ruby
-    Rails.application.config.pretty_weather.set_options do |options|
-      options.city_name = 'london'
-      options.units = 'imperial'
-    end
-    ```
+```ruby
+Rails.application.config.pretty_weather.set_options do |options|
+options.city_name = 'london'
+options.units = 'imperial'
+end
+```
+
 From now pretty weather gem will specify London as default city for weather helpers with fahrenheit default temperature scale.
 
 ## Usage
@@ -41,7 +42,7 @@ There are three helpers, that will describe the weather:
 ```ruby
 <%= weather_temp %> #=> '+13'
 # to rewrite default city_name;
- <%= weather_temp 'odesa' %>
+<%= weather_temp 'odesa' %>
 # you also may add second param to rewrite temperature scale
 <%= weather_temp 'odesa', 'metric' %>
 ```
@@ -51,11 +52,11 @@ There are three helpers, that will describe the weather:
 ```ruby
 <%= weather_condition %> #=> 'cloud'
 # to rewrite default city_name;
- <%= weather_condition 'odesa' %> #=> 'thunder'
+<%= weather_condition 'odesa' %> #=> 'thunder'
 ```
 
 3. weather_tag - this helper will work properly in case if you will install this gem:
-[a gem link](https://github.com/CodySchaaf/weather-icons-rails)
+[Weather-icons-rails](https://github.com/CodySchaaf/weather-icons-rails)
 If you will do this you will get a pretty icon in result of helper work:
 
 ```ruby
@@ -66,7 +67,8 @@ But if you want, you may use Weather class with your own ideas and helpers.
 To create Weather object, for example, in controller, use:
 
 ```ruby
-@weather = PrettyWeather::Weather.new('odesa', 'metric') # here you can't use default options and you should specify city and scale.
+# here you can't use default options and you should specify city and scale.
+@weather = PrettyWeather::Weather.new('odesa', 'metric')
 ```
 
 ## Contributing
