@@ -7,11 +7,11 @@ require "pretty_weather/version"
 Gem::Specification.new do |s|
   s.name        = "pretty_weather"
   s.version     = PrettyWeather::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of PrettyWeather."
-  s.description = "TODO: Description of PrettyWeather."
+  s.authors     = ["NikitaSmall"]
+  s.email       = ["nikitasosnov@yahoo.com"]
+  s.homepage    = "https://github.com/NikitaSmall/pretty_weather"
+  s.summary     = "Gem for easy implementation for openweather api"
+  s.description = "Pretty_weather is a gem for easy implementation for openweather api with pretty icons for current weather at specific location"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

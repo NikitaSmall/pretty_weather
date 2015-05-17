@@ -1,8 +1,10 @@
 require 'test_helper'
 
+require 'pretty_weather'
+
 class PrettyWeatherTest < ActiveSupport::TestCase
   setup do
-    @weather = PrettyWeather::PrettyWeather.new('odesa')
+    @weather = PrettyWeather::Weather.new('odesa', 'metric')
   end
 
   test "truth" do
