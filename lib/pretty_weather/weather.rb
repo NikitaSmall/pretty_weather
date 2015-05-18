@@ -3,11 +3,20 @@ require 'nokogiri'
 
 module PrettyWeather
   class Weather
-    attr_accessor :temp, :weather, :icon_tag, :temp_numeric
+    attr_accessor :temp, :weather, :icon_tag, :temp_numeric, :city_name, :units, :updated_at
 
     def initialize(city_name, units)
+      @city_name = city_name
+      @units = units
+
+      collect_data(city_name, units)
+    end
+
+    def collect_data(city_name = @city_name, units = @units)
       link = "http://api.openweathermap.org/data/2.5/weather?q=#{city_name}&mode=xml&units=#{units}" #Odesa for Odessa in Ukraine
       attempts = 3
+
+      @updated_at = Time.now
 
       begin
         data = Nokogiri::XML(open(link))

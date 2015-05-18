@@ -24,8 +24,8 @@ Place the 'pretty_weather.rb' at 'config/initializers/pretty_weather.rb' and wri
 
 ```ruby
 Rails.application.config.pretty_weather.set_options do |options|
-options.city_name = 'london'
-options.units = 'imperial'
+  options.city_name = 'london'
+  options.units = 'imperial'
 end
 ```
 
@@ -43,7 +43,7 @@ There are three helpers, that will describe the weather:
 <%= weather_temp %> #=> '+13'
 # to rewrite default city_name;
 <%= weather_temp 'odesa' %>
-# you also may add second param to rewrite temperature scale
+# you also may add second param to rewrite temperature scale;
 <%= weather_temp 'odesa', 'metric' %>
 ```
 
@@ -70,6 +70,29 @@ To create Weather object, for example, in controller, use:
 # here you can't use default options and you should specify city and scale.
 @weather = PrettyWeather::Weather.new('odesa', 'metric')
 ```
+For now in @weather object a lot of different information.
+In this object you can find:
+
+```ruby
+@weather = PrettyWeather::Weather.new('jerusalem', 'metric')
+@weather.temp # this will give you access to string with temperature state; like '+22'.
+@weather.weather # this will give you access to string with short weather description; like 'cloud'.
+@weather.icon_tag # this will give you access to string with tag, that you can place into your view; like '<i class="wi wi-cloudy"></i>'.
+@weather.temp_numeric # this takes a float number with current temperature state; like '16.536'.
+@weather.city_name # this will give you access to city_name with current weather. Also you may change city to update your current position.
+@weather.units # this will give you access to units of temperature scale. Also you may change units to update your scale.
+@weather.updated_at # this will show you a moment with last connection to the openweather server.
+```
+
+Also you may update your information without recreating new object. To update information do:
+
+```ruby
+# here you can't use default options and you should specify city and scale.
+@weather = PrettyWeather::Weather.new('odesa', 'metric')
+@weather.collect_data # this will update object
+@weather.collect_data('odessa', 'imperial') # this will update object with new city and scale (information about new city or scale will not be saved!)
+```
+
 
 ## Contributing
 

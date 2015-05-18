@@ -25,4 +25,13 @@ class PrettyWeatherTest < ActiveSupport::TestCase
     assert @weather.icon_tag.index('<i') >= 0
     assert @weather.icon_tag.index('</i>') >= 0
   end
+
+  test "collect_weather_should_update_weather_state" do
+    old_time = @weather.updated_at
+
+    @weather.collect_data
+    new_time = @weather.updated_at
+
+    assert_not_equal old_time, new_time
+  end
 end
