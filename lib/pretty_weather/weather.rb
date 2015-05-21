@@ -74,7 +74,7 @@ module PrettyWeather
                when 'day_cloud'
                  '<i class="wi wi-day-cloudy"></i>'
                when 'night_cloud'
-                 '<i class="wi wi-night-alt-cloudy"></i>'
+                 '<i class="wi wi-night-cloudy"></i>'
                when 'foggy'
                  '<i class="wi wi-dust"></i>'
                when 'day_rain'
