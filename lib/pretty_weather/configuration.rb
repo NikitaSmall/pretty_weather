@@ -1,10 +1,11 @@
 module PrettyWeather
   class Configuration
-    attr_accessor :city_name, :units
+    attr_accessor :city_param, :units, :mode
 
     def initialize
-      @city_name = 'london'
+      @city_param = 'london'
       @units = 'metric'
+      @mode = 'city_name'
     end
 
     def set_options(&block)

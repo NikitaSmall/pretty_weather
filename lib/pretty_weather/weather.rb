@@ -3,17 +3,24 @@ require 'nokogiri'
 
 module PrettyWeather
   class Weather
-    attr_accessor :temp, :weather, :icon_tag, :temp_numeric, :city_name, :units, :updated_at
+    attr_accessor :temp, :weather, :icon_tag, :temp_numeric, :city_param, :mode, :units, :updated_at
 
-    def initialize(city_name, units)
-      @city_name = city_name
+    def initialize(city_param, units, mode = 'city_name')
+      @city_param = city_param
       @units = units
+      @mode = mode
 
-      collect_data(city_name, units)
+      collect_data(city_param, units, mode)
     end
 
-    def collect_data(city_name = @city_name, units = @units)
-      link = "http://api.openweathermap.org/data/2.5/weather?q=#{city_name}&mode=xml&units=#{units}" #Odesa for Odessa in Ukraine
+    def collect_data(city_param = @city_param, units = @units, mode = @mode)
+      case mode
+        when 'city_name'
+          link = "http://api.openweathermap.org/data/2.5/weather?q=#{city_param}&mode=xml&units=#{units}" #Odesa for Odessa in Ukraine
+        when 'id'
+          link = "http://api.openweathermap.org/data/2.5/weather?id=#{city_param}&mode=xml&units=#{units}"
+      end
+
       attempts = 3
 
       @updated_at = Time.now

@@ -34,4 +34,10 @@ class PrettyWeatherTest < ActiveSupport::TestCase
 
     assert_not_equal old_time, new_time
   end
+
+  test "should_get_data_by_id" do
+    @another_weather = PrettyWeather::Weather.new('698740', 'metric', 'id')
+    assert_kind_of String, @weather.weather
+    assert @weather.weather.length >= 4
+  end
 end
