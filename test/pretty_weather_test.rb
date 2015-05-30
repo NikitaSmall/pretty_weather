@@ -37,7 +37,15 @@ class PrettyWeatherTest < ActiveSupport::TestCase
 
   test "should_get_data_by_id" do
     @another_weather = PrettyWeather::Weather.new('698740', 'metric', 'id')
-    assert_kind_of String, @weather.weather
-    assert @weather.weather.length >= 4
+    assert_kind_of String, @another_weather.weather
+    assert @another_weather.weather.length >= 4
+  end
+
+  test "should_update_weather_state_by_id" do
+    @another_weather = PrettyWeather::Weather.new('698740', 'metric', 'id')
+    @another_weather.collect_data
+
+    assert_kind_of String, @another_weather.weather
+    assert @another_weather.weather.length >= 4
   end
 end
